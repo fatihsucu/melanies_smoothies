@@ -1,11 +1,11 @@
 import streamlit as st
-from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col, when_matched  # <- required import
 
 # -----------------------------
 # Setup
 # -----------------------------
-session = get_active_session()
+cnx = st.connection('snowflake')
+session = cnx.session()
 
 st.set_page_config(page_title="Smoothies", page_icon="🥤", layout="wide")
 page = st.sidebar.radio("Choose a page", ["Ordering", "Pending Orders"])
