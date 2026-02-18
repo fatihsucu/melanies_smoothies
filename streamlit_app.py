@@ -1,5 +1,7 @@
 import streamlit as st
 from snowflake.snowpark.functions import col, when_matched  # <- required import
+import requests
+
 
 # -----------------------------
 # Setup
@@ -17,6 +19,14 @@ if page == "Ordering":
     st.title(":cup_with_straw: Customize Your Smoothie :cup_with_straw:")
     st.title("My Parents new healthy dinner")
     st.write("Choose the fruits you want in your custom Smoothie!")
+    smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+    st.text(smoothiefroot_response)
+    
+    smoothiefroot_json = smoothiefroot_response.json()
+    st.json(smoothiefroot_json)
+    
+    sf_df = [smoothiefroot_json]
+    st.dataframe(sf_df, use_container_width=True)
 
     name_on_order = st.text_input("Name on Smoothie Order")
 
