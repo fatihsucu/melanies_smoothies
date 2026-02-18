@@ -15,6 +15,7 @@ page = st.sidebar.radio("Choose a page", ["Ordering", "Pending Orders"])
 # -----------------------------
 if page == "Ordering":
     st.title(":cup_with_straw: Customize Your Smoothie :cup_with_straw:")
+    st.title("My Parents new healthy dinner")
     st.write("Choose the fruits you want in your custom Smoothie!")
 
     name_on_order = st.text_input("Name on Smoothie Order")
